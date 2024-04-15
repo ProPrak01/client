@@ -1,11 +1,11 @@
-//componenets/AddNode.js
 
 import React from "react";
+import Canvas from "./Canvas";
 
 const AddNote = ({ title, setTitle, content, setContent, onAddNote }) => {
 	return (
 		<div>
-			<h2>Add Note</h2>
+			<h2 style={{textAlign:'center'}}>ADD NOTE</h2>
 			<input
 				type="text"
 				placeholder="Title"
@@ -17,9 +17,17 @@ const AddNote = ({ title, setTitle, content, setContent, onAddNote }) => {
 				value={content}
 				onChange={(e) => setContent(e.target.value)}
 			></textarea>
+			<h3 style={{textAlign:'center'}}>	DRAW HERE</h3>
+
+			<div className="canvas">
+			<Canvas width={1000} height={1000} />
+
+			</div>
+
 			<button style={{borderRadius:"25px"}} className="button1" onClick={onAddNote}>
 				Add Note
 			</button>
+
 		</div>
 	);
 };

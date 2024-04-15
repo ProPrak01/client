@@ -1,4 +1,3 @@
-//App.js
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -58,21 +57,38 @@ const App = () => {
 	};
 
 	return (
+		// <div className="app-container">
+		// 	<h1>Notes App</h1>
+		// 	{/* <Canvas/> */}
+
+		
+		
+		// </div>
+		
 		<div className="app-container">
-			<h1>Notes App</h1>
-			<AddNote
+		<div className="addnotes" style={{width:'50vh',height:'90%'}}>
+		<AddNote
 				title={title}
 				setTitle={setTitle}
 				content={content}
 				setContent={setContent}
 				onAddNote={handleAddNote}
 			/>
-			<NoteList
+		</div>
+		<div className="notelistCurve">
+		<div className="notesList" style={{width:'50vh',height:'90%'}}>
+		<NoteList
 				notes={notes}
 				onEditNote={handleEditNote}
 				onDeleteNote={handleDeleteNote}
 			/>
 		</div>
+		</div>
+		
+		</div>
+
+		
+		
 	);
 };
 

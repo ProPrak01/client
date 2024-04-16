@@ -9,7 +9,7 @@ const App = () => {
 	const [notes, setNotes] = useState([]);
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
-
+	const [canvasData,setCanvasData] = useState("")
 	useEffect(() => {
 		// Fetch notes from the server
 		axios
@@ -21,11 +21,12 @@ const App = () => {
 	const handleAddNote = () => {
 		// Add a new note to the server
 		axios
-			.post("https://notes-app-taupe-five.vercel.app/api/notes", { title, content })
+			.post("https://notes-app-taupe-five.vercel.app/api/notes", { title, content, canvasData })
 			.then((response) => {
 				setNotes([...notes, response.data]);
 				setTitle("");
 				setContent("");
+				setCanvasData("");
 			})
 			.catch((error) => console.error("Error adding note:", error));
 	};
@@ -73,14 +74,19 @@ const App = () => {
 				content={content}
 				setContent={setContent}
 				onAddNote={handleAddNote}
+				setCanvasData={setCanvasData}
 			/>
 		</div>
-		<div className="notelistCurve">
-		<div className="notesList" style={{width:'50vh',height:'90%'}}>
+		<div className="notelistCurve" style={{width:'50vh',height:'90%'}}>
+		<h2 style={{textAlign:'center',color:'#41B06E'}}>NOTE LIST</h2>
+
+		<div className="notesList"  style={{width:'50vh',height:'90%'}} >
+		
 		<NoteList
 				notes={notes}
 				onEditNote={handleEditNote}
 				onDeleteNote={handleDeleteNote}
+			
 			/>
 		</div>
 		</div>

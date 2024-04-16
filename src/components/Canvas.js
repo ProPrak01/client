@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const Canvas = ({ width, height }) => {
+const Canvas = ({ width, height,onSaveCanvas }) => {
   const [isDrawing, setisDrawing] = useState(false);
   const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
   const canvasRef = useRef(null);
+  const handleSaveCanvas = () =>{
+    const canvas = canvasRef.current;
+    onSaveCanvas(canvas);
+  }
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -31,7 +35,9 @@ const Canvas = ({ width, height }) => {
     setisDrawing(false);
   };
 
-  return <canvas 
+  return ( <div style={{position:'relative'}}>
+    <canvas 
+    
     ref={canvasRef} 
     width={width}
     height={height} 
@@ -39,7 +45,12 @@ const Canvas = ({ width, height }) => {
     onMouseMove = {Draw}
     onMouseUp={stopDrawing}
     onMouseLeave={stopDrawing}
-/>;
+/>
+ <button onClick={handleSaveCanvas} style={{position:'absolute',top:'1rem',left:'1rem',borderRadius:'25px',padding:'0.3rem'}}>Confirm Drawing</button>
+ <button style={{position:'absolute',top:'4rem',left:'1rem',borderRadius:'25px',padding:'0.3rem'}}>Reset Drawing</button>
+  </div>
+  );
 };
+
 
 export default Canvas;

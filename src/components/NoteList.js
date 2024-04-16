@@ -1,12 +1,20 @@
 import React from "react";
+import CanvasPreview from "./CanvasPreview";
 
 const NoteList = ({ notes, onEditNote, onDeleteNote }) => {
 	return (
+		
 		<ul>
-			{notes.map((note) => (
+
+			{notes.map((note) => 
+			
+			(
+				
 				<li key={note._id}>
+				
 					<strong>{note.title}</strong>
 					<p>{note.content}</p>
+					<CanvasPreview  base64Data={note.canvasData} />
 
 					<button
 						className="button2"

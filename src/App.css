@@ -11,7 +11,7 @@
 }
 .notelistCurve{
 	border:0.2rem solid #FFF5E0;
-	max-width:50%;
+	max-width:80%;
 	max-height: 70vh;
 	margin: 20px auto;
 	padding: 20px;
@@ -20,18 +20,18 @@
 	border-radius: 25px;
 	padding: 1rem;
 	padding-bottom: 4rem;
-
+	overflow: scroll;
 }
 .notesList{
+	overflow: scroll;
 
-	max-width:80%;
+	/* max-width:80%;
 	max-height: 60vh;
 	margin: 20px auto;
 	padding: 20px;
 	background-color: #141E46;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	border-radius: 25px;
-	overflow: scroll;
+	border-radius: 25px; */
 	}
 body {
 	font-family: 'Arial', sans-serif;
@@ -76,6 +76,7 @@ body {
 	.notelistCurve{
 		
 	}
+	
 
 }
 
@@ -157,12 +158,23 @@ ul {
 }
 
 li {
+	max-width:90%;
+	max-height: 80%;
 	border: 2px solid #FFF5E0;
-
 	margin-bottom: 15px;
 	padding: 10px;
 	background-color: #41B06E;
 	border-radius: 15px;
+}
+@media only screen and (max-width: 500px){
+	li{
+		max-width:60%;
+	}
+	}
+@media only screen and (max-width: 400px){
+li{
+	max-width:50%;
+}
 }
 
 li strong {
